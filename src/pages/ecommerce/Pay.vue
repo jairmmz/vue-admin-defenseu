@@ -124,13 +124,8 @@
   </main>
 </template>
 
-<script>
-export default {
-  name: 'Pay',
-  data: function () {
-    return {
-      card: true,
-    }
-  } 
-}
+<script setup>
+import { ref } from 'vue'
+
+const card = ref('');
 </script>

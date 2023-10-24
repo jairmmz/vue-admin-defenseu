@@ -1,110 +1,88 @@
 <template>
-  <div class="flex h-screen overflow-hidden">
+  <!-- Page header -->
+  <div class="mb-8">
+    <h1 class="text-2xl md:text-3xl text-slate-800 font-bold">Dropdown ✨</h1>
+  </div>
 
-    <!-- Sidebar -->
-    <Sidebar :sidebarOpen="sidebarOpen" @close-sidebar="sidebarOpen = false" />
+  <div class="border-t border-slate-200">
 
-    <!-- Content area -->
-    <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white">
-      
-      <!-- Site header -->
-      <Header :sidebarOpen="sidebarOpen" @toggle-sidebar="sidebarOpen = !sidebarOpen" />
+    <!-- Components -->
+    <div class="space-y-8 mt-8 mb-80">
 
-      <main>
-        <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+      <!-- Classic Dropdown -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Classic Dropdown</h2>
+        <!-- Start -->
+        <DropdownClassic />
+        <!-- End -->
+      </div>
 
-          <!-- Page header -->
-          <div class="mb-8">
-            <h1 class="text-2xl md:text-3xl text-slate-800 font-bold">Dropdown ✨</h1>
-          </div>
+      <!-- Full-width Dropdown -->
+      <div class="w-80">
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Full-width Dropdown</h2>
+        <DropdownFull />
+      </div>
 
-          <div class="border-t border-slate-200">
+      <!-- Filter -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Filter</h2>
+        <DropdownFilter />
+      </div>
 
-            <!-- Components -->
-            <div class="space-y-8 mt-8 mb-80">
+      <!-- Profile -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Profile</h2>
+        <DropdownProfile />
+      </div>
 
-              <!-- Classic Dropdown -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Classic Dropdown</h2>
-                <!-- Start -->
-                <DropdownClassic />
-                <!-- End -->
-              </div>
+      <!-- Switch Account -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Switch Account</h2>
+        <DropdownSwitch />
+      </div>
 
-              <!-- Full-width Dropdown -->
-              <div class="w-80">
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Full-width Dropdown</h2>
-                <DropdownFull />
-              </div>
+      <!-- Notification -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Notification</h2>
+        <DropdownNotifications />
+      </div>
 
-              <!-- Filter -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Filter</h2>
-                <DropdownFilter />
-              </div>
+      <!-- Help Center -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Help Center</h2>
+        <DropdownHelp />
+      </div>
 
-              <!-- Profile -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Profile</h2>
-                <DropdownProfile />
-              </div>
+      <!-- Quick Selection -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Quick Selection</h2>
+        <DropdownEditMenu class="relative inline-flex">
+          <li>
+            <a class="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3" href="#0">Option 1</a>
+          </li>
+          <li>
+            <a class="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3" href="#0">Option 2</a>
+          </li>
+          <li>
+            <a class="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" href="#0">Remove</a>
+          </li>
+        </DropdownEditMenu>
+      </div>
 
-              <!-- Switch Account -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Switch Account</h2>
-                <DropdownSwitch />
-              </div>
+      <!-- Datepicker (built with flatpickr) -->
+      <div>
+        <h2 class="text-2xl text-slate-800 font-bold mb-6">Datepicker (built with <a class="underline hover:no-underline"
+            href="https://github.com/flatpickr/flatpickr" target="_blank" rel="noreferrer">flatpickr</a>)</h2>
+        <Datepicker />
+      </div>
 
-              <!-- Notification -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Notification</h2>
-                <DropdownNotifications />
-              </div>
-
-              <!-- Help Center -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Help Center</h2>
-                <DropdownHelp />
-              </div>
-
-              <!-- Quick Selection -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Quick Selection</h2>
-                <DropdownEditMenu class="relative inline-flex">
-                  <li>
-                    <a class="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3" href="#0">Option 1</a>
-                  </li>
-                  <li>
-                    <a class="font-medium text-sm text-slate-600 hover:text-slate-800 flex py-1 px-3" href="#0">Option 2</a>
-                  </li>
-                  <li>
-                    <a class="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" href="#0">Remove</a>
-                  </li>
-                </DropdownEditMenu>                
-              </div>
-
-              <!-- Datepicker (built with flatpickr) -->
-              <div>
-                <h2 class="text-2xl text-slate-800 font-bold mb-6">Datepicker (built with <a class="underline hover:no-underline" href="https://github.com/flatpickr/flatpickr" target="_blank" rel="noreferrer">flatpickr</a>)</h2>
-                <Datepicker />
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>        
-      </main>
-
-    </div> 
+    </div>
 
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-import Sidebar from '../../partials/Sidebar.vue'
-import Header from '../../partials/Header.vue'
 import DropdownClassic from '../../components/DropdownClassic.vue'
 import DropdownFull from '../../components/DropdownFull.vue'
 import DropdownFilter from '../../components/DropdownFilter.vue'
@@ -115,28 +93,4 @@ import DropdownHelp from '../../components/DropdownHelp.vue'
 import DropdownEditMenu from '../../components/DropdownEditMenu.vue'
 import Datepicker from '../../components/Datepicker.vue'
 
-export default {
-  name: 'DropdownPage',
-  components: {
-    Sidebar,
-    Header,
-    DropdownClassic,
-    DropdownFull,
-    DropdownFilter,
-    DropdownProfile,
-    DropdownSwitch,
-    DropdownNotifications,
-    DropdownHelp,
-    DropdownEditMenu,
-    Datepicker,
-  },
-  setup() {
-
-    const sidebarOpen = ref(false)
-
-    return {
-      sidebarOpen,
-    }  
-  }
-}
 </script>
