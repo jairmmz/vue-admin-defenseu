@@ -36,38 +36,14 @@
                 <span class="text-sm font-medium ml-2">Real Time Value</span>
               </label>
             </li>
-            <li class="py-1 px-3">
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm font-medium ml-2">Top Channels</span>
-              </label>
-            </li>
-            <li class="py-1 px-3">
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm font-medium ml-2">Sales VS Refunds</span>
-              </label>
-            </li>
-            <li class="py-1 px-3">
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm font-medium ml-2">Last Order</span>
-              </label>
-            </li>
-            <li class="py-1 px-3">
-              <label class="flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-                <span class="text-sm font-medium ml-2">Total Spent</span>
-              </label>
-            </li>
           </ul>
           <div class="py-2 px-3 border-t border-slate-200 bg-slate-50">
             <ul class="flex items-center justify-between">
               <li>
-                <button class="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Clear</button>
+                <button class="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Limpiar</button>
               </li>
               <li>
-                <button class="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" @click="dropdownOpen = false" @focusout="dropdownOpen = false">Apply</button>
+                <button class="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" @click="dropdownOpen = false" @focusout="dropdownOpen = false">Aplicar</button>
               </li>
             </ul>
           </div>          

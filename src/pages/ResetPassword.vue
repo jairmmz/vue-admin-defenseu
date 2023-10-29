@@ -38,9 +38,9 @@
           </div>
 
           <div class="max-w-sm mx-auto px-4 py-8">
-            <h1 class="text-3xl text-slate-800 font-bold mb-6">Reset your Password ✨</h1>
+            <h1 class="text-3xl text-slate-800 font-bold mb-6">Recuperar contraseña ✨</h1>
             <!-- Form -->
-            <form>
+            <form @submit.prevent="resetPassword">
               <div class="space-y-4">
                 <div>
                   <label class="block text-sm font-medium mb-1" for="email">Email Address <span

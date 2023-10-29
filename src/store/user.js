@@ -5,7 +5,7 @@ export const useUserStore = defineStore('user', {
     state: () => ({
         user: {
             data: {},
-            token: 'null',
+            token: null,
         },
     }),
 
@@ -14,11 +14,14 @@ export const useUserStore = defineStore('user', {
     actions: {
         async login(data) {
             return await axiosClient.post('/login', data)
-            .then(({ data }) => {
-                this.setUser(data.user);
-                this.setToken(data.token);
-                return data;
+            .then((response) => {
+                this.setUser(response.data.user);
+                this.setToken(response.data.token);
+            })
+            .catch((error) => {
+                return error.response.data.message;
             });
+                
         },
 
         async logout() {

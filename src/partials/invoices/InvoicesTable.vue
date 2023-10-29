@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white shadow-lg rounded-sm border border-slate-200 relative">
     <header class="px-5 py-4">
-      <h2 class="font-semibold text-slate-800">Invoices <span class="text-slate-400 font-medium">67</span></h2>
+      <h2 class="font-semibold text-slate-800">{{ title }}</h2>
     </header>
     <div>
 
@@ -71,7 +71,7 @@ export default {
   components: {
     Invoice,
   },  
-  props: ['selectedItems'],
+  props: ['selectedItems', 'title'],
   setup(props, { emit }) {
 
     const selectAll = ref(false)
@@ -111,31 +111,11 @@ export default {
         type: 'Subscription',
       },
       {
-        id: '2',
-        invoice: '#889924',
-        total: '$89.00',
-        status: 'Paid',
-        customer: 'Sergio Gonnelli',
-        issueddate: '17/07/2021',
-        paiddate: '19/07/2021',        
-        type: 'One-time',
-      },
-      {
         id: '3',
         invoice: '#897726',
         total: '$129.00',
         status: 'Due',
         customer: 'Manuel Garbaya',
-        issueddate: '04/07/2021',
-        paiddate: '-',        
-        type: 'Subscription',
-      },
-      {
-        id: '4',
-        invoice: '#123567',
-        total: '$129.00',
-        status: 'Due',
-        customer: 'Cool Robot',
         issueddate: '04/07/2021',
         paiddate: '-',        
         type: 'Subscription',
@@ -151,16 +131,6 @@ export default {
         type: 'One-time',
       },
       {
-        id: '6',
-        invoice: '#136988',
-        total: '$69.00',
-        status: 'Paid',
-        customer: 'Glenn Thomas',
-        issueddate: '01/07/2021',
-        paiddate: '01/07/2021',        
-        type: 'One-time',
-      },
-      {
         id: '7',
         invoice: '#442206',
         total: '$129.00',
@@ -170,26 +140,6 @@ export default {
         paiddate: '-',        
         type: 'Subscription',
       },
-      {
-        id: '8',
-        invoice: '#764321',
-        total: '$89.00',
-        status: 'Paid',
-        customer: 'Brian Halligan',
-        issueddate: '21/06/2021',
-        paiddate: '29/06/2021',        
-        type: 'One-time',
-      },
-      {
-        id: '9',
-        invoice: '#908764',
-        total: '$129.00',
-        status: 'Due',
-        customer: 'Carolyn McNeail',
-        issueddate: '17/06/2021',
-        paiddate: '-',        
-        type: 'Subscription',
-      }
     ])
 
     return {

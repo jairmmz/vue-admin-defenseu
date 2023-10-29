@@ -45,15 +45,17 @@
 
     <!-- Content -->
     <div class="relative">
-      <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Good afternoon, Acme Inc. 👋</h1>
+      <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Good afternoon, {{ user }} 👋</h1>
       <p>Here is what’s happening with your projects today:</p>
     </div>
 
   </div>
 </template>
 
-<script>
-export default {
-  name: 'WelcomeBanner',
-}
+<script setup>
+import { computed } from 'vue';
+import { useUserStore } from '../../store/user';
+
+const store = useUserStore();
+const user = computed(() => store.$state.user.data.name);
 </script>

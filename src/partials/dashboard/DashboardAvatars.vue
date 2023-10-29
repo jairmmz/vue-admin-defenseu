@@ -31,8 +31,6 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: 'DashboardAvatars',
-}
+<script setup>
+
 </script>

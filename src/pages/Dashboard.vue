@@ -39,7 +39,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner.vue'
 import DashboardAvatars from '../partials/dashboard/DashboardAvatars.vue'
 import FilterButton from '../components/DropdownFilter.vue'

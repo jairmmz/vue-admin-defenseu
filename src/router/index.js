@@ -5,6 +5,11 @@ import AppLayout from '../layouts/AppLayout.vue';
 import Dashboard from '../pages/Dashboard.vue';
 import Analytics from '../pages/Analytics.vue';
 import Fintech from '../pages/Fintech.vue';
+
+import Documents from '../pages/documents/Documents.vue';
+import DocumentsCreate from '../pages/documents/DocumentsCreate.vue';
+import DocumentsEdit from '../pages/documents/DocumentsEdit.vue';
+
 import Customers from '../pages/ecommerce/Customers.vue';
 import Orders from '../pages/ecommerce/Orders.vue';
 import Invoices from '../pages/ecommerce/Invoices.vue';
@@ -52,6 +57,11 @@ const routes = [
       { path: '/dashboard', name: 'app.dashboard',component: Dashboard },
       { path: '/dashboard/analytics', name: 'app.analitycs', component: Analytics },
       { path: '/dashboard/fintech', name: 'app.fintech', component: Fintech },
+      
+      { path: '/documents', name: 'app.documents', component: Documents },
+      { path: '/documents/create', name: 'app.documents.create', component: DocumentsCreate },
+      { path: '/documents/edit/:id', name: 'app.documents.edit', component: DocumentsEdit },
+
       { path: '/ecommerce/customers', name: 'app.customers', component: Customers },
       { path: '/ecommerce/orders', name: 'app.orders', component: Orders },
       { path: '/ecommerce/invoices', name: 'app.invoices', component: Invoices },

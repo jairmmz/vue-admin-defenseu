@@ -67,23 +67,23 @@ export default {
     const options = ref([
       {
         id: 0,
-        period: 'Today'
+        period: 'Hoy'
       },
       {
         id: 1,
-        period: 'Last 7 Days'
+        period: 'Ultima Semana'
       },
       {
         id: 2,
-        period: 'Last Month'
+        period: 'Ultimo Mes'
       },
       {
         id: 3,
-        period: 'Last 12 Months'
+        period: 'Ultimo Año'
       },
       {
         id: 4,
-        period: 'All Time'
+        period: 'Todos'
       }
     ])
 

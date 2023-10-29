@@ -1,7 +1,7 @@
 <template>
   <!-- Modal backdrop -->
   <transition
-    enter-active-class="transition ease-out duration-200"
+    enter-active-class="transition ease-out duration-100"
     enter-from-class="opacity-0"
     enter-to-class="opacity-100"
     leave-active-class="transition ease-out duration-100"
@@ -12,10 +12,10 @@
   </transition>
   <!-- Modal dialog -->
   <transition
-    enter-active-class="transition ease-in-out duration-200"
+    enter-active-class="transition ease-in-out duration-100"
     enter-from-class="opacity-0 translate-y-4"
     enter-to-class="opacity-100 translate-y-0"
-    leave-active-class="transition ease-in-out duration-200"
+    leave-active-class="transition ease-in-out duration-100"
     leave-from-class="opacity-100 translate-y-0"
     leave-to-class="opacity-0 translate-y-4"
   >
