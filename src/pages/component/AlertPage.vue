@@ -114,7 +114,7 @@
             A warning toast.
           </Toast3>
 
-          <Toast3 type="success" :open="toast3SuccessOpen">
+          <Toast3 :type="type" :open="isOpenNotification">
             A successful toast.
           </Toast3>
 
@@ -193,7 +193,7 @@ const toast2SuccessOpen = ref(true)
 const toast2InfoOpen = ref(true)
 const toast3WarningOpen = ref(true)
 const toast3ErrorOpen = ref(true)
-const toast3SuccessOpen = ref(true)
+const isOpenNotification = ref(true)
 const toast3InfoOpen = ref(true)
 const notificationWarningOpen = ref(true)
 const notificationErrorOpen = ref(true)

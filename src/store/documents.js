@@ -7,6 +7,9 @@ export const useDocumentStore = defineStore("document", {
     currentDocument: {},
     modalViewDocument: false,
     modalDeleteDocument: false,
+    isOpenNotification: false,
+    typeNotification: '',
+    messageNotification: '',
   }),
 
   getters: {},
@@ -22,6 +25,7 @@ export const useDocumentStore = defineStore("document", {
       });
     },
 
+
     async createDocument(document) {
       let form = new FormData();
       
@@ -33,16 +37,14 @@ export const useDocumentStore = defineStore("document", {
       document = form;
 
       return await axiosClient.post('/documents/store', document)
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        this.notification('success', 'Documento creado con éxito');
       })
-      .catch((error) => {
-        console.log(error.response);
-      })
-      .finally(() => {
-        // Return to documents page
-      })
+      .catch(() => {
+        this.notification('error', 'Error al crear el documento');
+      });
     },
+
 
     async updateDocument(document) {
       const id = document.id;
@@ -57,16 +59,16 @@ export const useDocumentStore = defineStore("document", {
         document = form;
       }
       return await axiosClient.post(`/documents/update/${id}`, document)
-      .then((response) => {
-        return response.data;
+      .then(() => {
+        this.notification('success', 'Documento actualizado con éxito');
+        console.log('Documento actualizado con éxito');
       })
       .catch((error) => {
+        this.notification('error', 'Error al actualizar el documento');
         console.log(error.response);
-      })
-      .finally(() => {
-        // Toast message
-      })
+      });
     },
+
 
     async getDocument(document) {
       return await axiosClient.get(`/documents/show/${document}`)
@@ -79,6 +81,7 @@ export const useDocumentStore = defineStore("document", {
       });
     },
 
+
     viewDocument(document) {
       this.modalViewDocument = false;
       setTimeout(() => {
@@ -86,6 +89,7 @@ export const useDocumentStore = defineStore("document", {
         this.modalViewDocument = true;
       }, 100);
     },
+
 
     modalDelete(document) {
       this.modalDeleteDocument = false;
@@ -95,20 +99,33 @@ export const useDocumentStore = defineStore("document", {
       }, 100);
     },
 
+
     async deleteDocument(document) {
       return await axiosClient.post(`/documents/delete/${document}`)
       .then((response) => {
         return response.data;
       })
       .catch((error) => {
-        return error.response.data;
+        console.log(error.response);
       })
       .finally(() => {
         this.modalDeleteDocument = false;
         this.getDocuments();
       });
-    }
-  },
+    },
+    
 
+    notification(type, message) {
+      this.typeNotification = type;
+      this.messageNotification = message;
+      this.isOpenNotification = true;
+
+      setTimeout(() => {
+        this.isOpenNotification = false;
+      }, 3000);
+    },
+
+
+  },
 
 });

@@ -6,29 +6,34 @@
 
     <!-- Left: Title -->
     <div class="mb-4 sm:mb-0">
-        <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-5">Editar documento ✨</h1>
+        <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-5">Editar noticia ✨</h1>
     </div>
     <form @submit.prevent="handleSubmit" method="POST" enctype="multipart/form-data">
         <div class="space-y-4">
             <!-- Título -->
             <div class="">
-                <label class="block text-sm font-medium mb-1" for="title">Título del documento</label>
+                <label class="block text-sm font-medium mb-1" for="title">Título de la noticia</label>
                 <input v-model="form.title" type="text" id="title" name="title" class="form-input w-full" required />
+            </div>
+            <!-- Slug -->
+            <div class="">
+                <label class="block text-sm font-medium mb-1" for="slug">Slug de la noticia</label>
+                <input v-model="form.slug" type="text" id="slug" name="slug" class="form-input w-full" enabled />
             </div>
             <!-- Descripción -->
             <div class="">
-                <label class="block text-sm font-medium mb-1" for="description">Descripción del documento</label>
+                <label class="block text-sm font-medium mb-1" for="description">Descripción de la noticia</label>
                 <textarea v-model="form.description" id="description" title="description" class="form-input w-full" rows="4" required>
                 </textarea>
             </div>
-            <!-- Archivo documento -->
+            <!-- Imagen de la noticia -->
             <div class="">
-                <label class="block text-sm font-medium mb-1" for="file">Archido del documento (PDF, DOC.)</label>
+                <label class="block text-sm font-medium mb-1" for="file">Imagen de la noticia</label>
                 <input type="file" @change="handleChangeFile($event)" id="file" title="file" class="form-input w-full" />
             </div>
             <div>
                 <!-- Vista previa del file -->
-                <span class="block text-sm font-medium mb-1">Vista previa del documento</span>
+                <span class="block text-sm font-medium mb-1">Vista previa de la imagen</span>
                 <a :href="fileUrl" target="_blank">{{ fileName }}</a>
             </div>
             <!-- Fecha de documento y estado -->
@@ -65,12 +70,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useDocumentStore } from '../../store/documents';
+import { useNoticeStore } from '../../store/notices';
 import { storeToRefs } from 'pinia';
 import Toast3 from '../../components/Toast3.vue';
 
 const route = useRoute();
-const store = useDocumentStore();
+const store = useNoticeStore();
+
 const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(store);
 
 
@@ -80,15 +86,15 @@ const fileUrl = ref(null);
 const form = ref({
     title: null,
     description: null,
+    slug: null,
     file: null,
-    date_document: null,
     status: 'activo',
 });
 
 onMounted(async () => {
-    form.value = await store.getDocument(route.params.id);
+    form.value = await store.getNotice(route.params.id);
     if(form.value.file) {
-        fileUrl.value = `${import.meta.env.VITE_API_BASE_URL}/assets/documents/${form.value.file}`;
+        fileUrl.value = `${import.meta.env.VITE_API_BASE_URL}/assets/images/${form.value.file}`;
         fileName.value = form.value.file;
         form.value.file = null;
     }
@@ -106,7 +112,7 @@ const handleChangeFile = (e) => {
 
 const handleSubmit = async () => {
     try {
-        await store.updateDocument(form.value);
+        await store.updateNotice(form.value);
     } catch (error) {
         console.log(error);
     }

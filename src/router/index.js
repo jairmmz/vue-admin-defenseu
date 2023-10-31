@@ -10,6 +10,10 @@ import Documents from '../pages/documents/Documents.vue';
 import DocumentsCreate from '../pages/documents/DocumentsCreate.vue';
 import DocumentsEdit from '../pages/documents/DocumentsEdit.vue';
 
+import Notices from '../pages/notices/Notices.vue';
+import NoticesCreate from '../pages/notices/NoticesCreate.vue';
+import NoticesEdit from '../pages/notices/NoticesEdit.vue';
+
 import Customers from '../pages/ecommerce/Customers.vue';
 import Orders from '../pages/ecommerce/Orders.vue';
 import Invoices from '../pages/ecommerce/Invoices.vue';
@@ -61,6 +65,10 @@ const routes = [
       { path: '/documents', name: 'app.documents', component: Documents },
       { path: '/documents/create', name: 'app.documents.create', component: DocumentsCreate },
       { path: '/documents/edit/:id', name: 'app.documents.edit', component: DocumentsEdit },
+
+      { path: '/notices', name: 'app.notices', component: Notices },
+      { path: '/notices/create', name: 'app.notices.create', component: NoticesCreate },
+      { path: '/notices/edit/:id', name: 'app.notices.edit', component: NoticesEdit },
 
       { path: '/ecommerce/customers', name: 'app.customers', component: Customers },
       { path: '/ecommerce/orders', name: 'app.orders', component: Orders },

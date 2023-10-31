@@ -4,20 +4,20 @@
 
         <!-- Left: Title -->
         <div class="mb-4 sm:mb-0">
-            <h1 class="text-2xl md:text-3xl text-slate-800 font-bold">Documentos ✨</h1>
+            <h1 class="text-2xl md:text-3xl text-slate-800 font-bold">Noticias ✨</h1>
         </div>
 
         <!-- Right: Actions  -->
         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
             <!-- Search form -->
-            <SearchForm placeholder="Buscar documento" />
+            <SearchForm placeholder="Buscar noticia" />
             <!-- Create invoice button -->
-            <router-link :to="{ name: 'app.documents.create' }" class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
+            <router-link :to="{ name: 'app.notices.create' }" class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                 <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                     <path
                         d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                 </svg>
-                <span class="hidden xs:block ml-2">Crear documento</span>
+                <span class="hidden xs:block ml-2">Crear noticia</span>
             </router-link>
         </div>
 
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Table -->
-    <DocumentsTable @change-selection="updateSelectedItems($event)" title="Documentos" />
+    <NoticesTable @change-selection="updateSelectedItems($event)" title="Noticias" />
 
     <!-- Pagination -->
     <div class="mt-8">
@@ -73,17 +73,16 @@
   
 <script setup>
 import { ref } from 'vue'
-import { useDocumentStore } from '../../store/documents'
-import { storeToRefs } from 'pinia'
+import { useNoticeStore } from '../../store/notices'
+import { storeToRefs } from 'pinia';
 import SearchForm from '../../components/SearchForm.vue'
 import DeleteButton from '../../partials/actions/DeleteButton.vue'
 import DateSelect from '../../components/DateSelect.vue'
 import FilterButton from '../../components/DropdownFilter.vue'
-import DocumentsTable from './DocumentsTable.vue'
+import NoticesTable from './NoticesTable.vue'
 import PaginationClassic from '../../components/PaginationClassic.vue'
-import Toast3 from '../../components/Toast3.vue';
 
-const store = useDocumentStore()
+const store = useNoticeStore()
 const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(store);
 
 const selectedItems = ref([])

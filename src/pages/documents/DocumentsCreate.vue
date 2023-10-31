@@ -1,5 +1,10 @@
 <template>
-    <!-- Left: Title -->
+    <!-- Mensaje de notificación -->
+    <Toast3 v-if="isOpenNotification" :type="typeNotification" :open="isOpenNotification">
+        {{ messageNotification }}
+    </Toast3>
+
+    <!-- Título de la izquierda -->
     <div class="mb-4 sm:mb-0">
         <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-5">Crear documento ✨</h1>
     </div>
@@ -55,8 +60,11 @@
 
 <script setup>
 import { useDocumentStore } from '../../store/documents';
+import { storeToRefs } from 'pinia';
+import Toast3 from '../../components/Toast3.vue';
 
 const store = useDocumentStore();
+const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(store);
 
 const form = {
     title: '',
@@ -73,8 +81,17 @@ const handleChangeFile = (e) => {
 const handleSubmit = async () => {
     try {
         await store.createDocument(form);
+        resetForm();
     } catch (error) {
         console.log(error);
     }
+}
+
+const resetForm = () => {
+    form.title = '';
+    form.description = '';
+    form.file = '';
+    form.date_document = '';
+    form.status = 'activo';
 }
 </script>
