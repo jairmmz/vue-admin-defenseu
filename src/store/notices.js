@@ -10,9 +10,6 @@ export const useNoticeStore = defineStore('notice', {
     modalViewNotice: false,
     modalDeleteNotice: false,
     errorsMessage: [],
-    isOpenNotification: false,
-    typeNotification: '',
-    messageNotification: '',
   }),
 
   getters: {},
@@ -44,23 +41,17 @@ export const useNoticeStore = defineStore('notice', {
 
 
     async updateNotice(notice) {
+      const storeNotification = useNotificationStore();
       const id = notice.id;
       if(notice.image){
-        let form = new FormData();
-      
-        form.append('title', notice.title);
-        form.append('slug', notice.slug);
-        form.append('description', notice.description);
-        form.append('image', notice.image);
-        form.append('status', notice.status);
-        notice = form;
+        notice = this.formData(notice);
       }
       return await axiosClient.post(`/notices/update/${id}`, notice)
-      .then(() => {
-        this.notification('success', 'Noticia actualizada con éxito');
+      .then((response) => {
+        storeNotification.notification('success', 'Noticia actualizada con éxito');
       })
       .catch((error) => {
-        this.notification('error', 'Error al actualizar la noticia');
+        storeNotification.notification('error', 'Ocurrio un problema al actualizar la noticia');
         console.log(error.response);
       });
     },

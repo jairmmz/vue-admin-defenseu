@@ -43,24 +43,35 @@
           <UserMenu align="right" />
 
         </div>
-
       </div>
     </div>
-  </header>
+
+    <!-- Mensaje de notificación -->
+    <Toast3 v-if="isOpenNotification" :type="typeNotification" :open="isOpenNotification">
+        {{ messageNotification }}
+    </Toast3>
+
+    </header>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useNotificationStore } from '../store/notification'
+import { storeToRefs } from 'pinia'
 import SearchModal from '../components/ModalSearch.vue'
 import Notifications from '../components/DropdownNotifications.vue'
 import Help from '../components/DropdownHelp.vue'
 import UserMenu from '../components/DropdownProfile.vue'
+import Toast3 from '../components/Toast3.vue'
 
 defineProps({
   sidebarOpen: {
     type: Boolean,
   },
 })
+
+const storeNotification = useNotificationStore()
+const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(storeNotification);
 
 const searchModalOpen = ref(false)
 </script>

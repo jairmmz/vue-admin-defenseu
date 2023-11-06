@@ -20,8 +20,11 @@
                                 disabled>{{ notice.description }}</textarea>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-1" for="email">Archivo</label>
-                            <a :href="getFileUrl(notice.image)" target="_blank" class="inline-block w-full p-1 bg-slate-100 hover:text-blue-600">{{ notice.image }}</a>
+                            <label class="block text-sm font-medium mb-1" for="email">Imagen de la noticia</label>
+                            <a v-if="notice.image"  :href="getFileUrl(notice.image)" class="inline-block hover:text-blue-600" target="_blank">
+                                <img :src="getFileUrl(notice.image)" class="rounded-full w-16 h-16" :alt="notice.title">
+                            </a>
+                            <span v-else>Sin imagen que mostrar.</span>
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-1" for="email">Fecha de la noticia</label>

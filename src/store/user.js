@@ -20,8 +20,7 @@ export const useUserStore = defineStore('user', {
             })
             .catch((error) => {
                 return error.response.data.message;
-            });
-                
+            }); 
         },
 
         async logout() {

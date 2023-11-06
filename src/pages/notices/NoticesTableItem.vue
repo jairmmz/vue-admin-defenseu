@@ -14,7 +14,13 @@
         </td>
         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
             <div>
-                <a :href="getFileUrl(notice.image)" class="hover:text-blue-600" target="_blank">Ver imagen</a>
+                <!-- Image notice -->
+                <a v-if="notice.image" :href="getFileUrl(notice.image)" class="hover:text-blue-600" target="_blank">
+                    <img :src="getFileUrl(notice.image)" class="rounded-full w-16 h-16" :alt="notice.title">
+                </a>
+                <a v-else href="#" class="hover:text-blue-600">
+                    <img src="../../images/avatar-01.jpg" class="rounded-full w-16 h-16">
+                </a>
             </div>
         </td>
         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -76,6 +82,10 @@ export default {
 
         const store = useNoticeStore();
 
+        const getFileUrl = (filename) => {
+            return `${import.meta.env.VITE_API_BASE_URL}/assets/images/${filename}`;
+        }
+
         const viewNotice = (id) => {
             try {
                 store.viewNotice(id);
@@ -100,10 +110,6 @@ export default {
                 updatedSelected.push(props.value)
             }
             context.emit('update:selected', updatedSelected)
-        }
-
-        const getFileUrl = (filename) => {
-            return `${import.meta.env.VITE_API_BASE_URL}/assets/images/${filename}`;
         }
 
         return {

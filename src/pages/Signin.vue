@@ -52,7 +52,7 @@
               </span>
             </div>
             <!-- Form -->
-            <form @submit.prevent="handleSubmit">
+            <form @submit.prevent="handleSubmit" autocomplete="off">
               <input type="hidden" name="remember" value="true">
               <div class="space-y-4">
                 <div>

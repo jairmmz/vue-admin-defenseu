@@ -1,9 +1,4 @@
 <template>
-    <!-- Mensaje de notificación -->
-    <Toast3 v-if="isOpenNotification" :type="typeNotification" :open="isOpenNotification">
-        {{ messageNotification }}
-    </Toast3>
-
     <!-- Título de la izquierda -->
     <div class="mb-4 sm:mb-0">
         <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-5">Crear noticia ✨</h1>
@@ -77,14 +72,8 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import { useNoticeStore } from '../../store/notices';
-import { useNotificationStore } from '../../store/notification';
-import { storeToRefs } from 'pinia';
-import Toast3 from '../../components/Toast3.vue';
 
 const storeNotice = useNoticeStore();
-const storeNotification = useNotificationStore();
-
-const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(storeNotification);
 
 const imagePreview = ref(null);
 

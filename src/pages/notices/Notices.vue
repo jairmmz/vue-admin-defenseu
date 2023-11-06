@@ -73,17 +73,12 @@
   
 <script setup>
 import { ref } from 'vue'
-import { useNoticeStore } from '../../store/notices'
-import { storeToRefs } from 'pinia';
 import SearchForm from '../../components/SearchForm.vue'
 import DeleteButton from '../../partials/actions/DeleteButton.vue'
 import DateSelect from '../../components/DateSelect.vue'
 import FilterButton from '../../components/DropdownFilter.vue'
 import NoticesTable from './NoticesTable.vue'
 import PaginationClassic from '../../components/PaginationClassic.vue'
-
-const store = useNoticeStore()
-const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(store);
 
 const selectedItems = ref([])
 

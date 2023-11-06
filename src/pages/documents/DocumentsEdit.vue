@@ -1,9 +1,4 @@
 <template>
-    <!-- Mensaje de notificación -->
-    <Toast3 v-if="isOpenNotification" :type="typeNotification" :open="isOpenNotification">
-        {{ messageNotification }}
-    </Toast3>
-
     <!-- Left: Title -->
     <div class="mb-4 sm:mb-0">
         <h1 class="text-2xl md:text-3xl text-slate-800 font-bold mb-5">Editar documento ✨</h1>
@@ -66,13 +61,9 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useDocumentStore } from '../../store/documents';
-import { storeToRefs } from 'pinia';
-import Toast3 from '../../components/Toast3.vue';
 
 const route = useRoute();
 const store = useDocumentStore();
-const { isOpenNotification, typeNotification, messageNotification } = storeToRefs(store);
-
 
 const fileName = ref(null);
 const fileUrl = ref(null);

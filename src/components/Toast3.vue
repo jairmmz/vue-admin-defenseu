@@ -1,7 +1,7 @@
 <template>
   <div v-show="open">
     <div
-      class="md:absolute md:right-7 min-w-80 px-4 py-2 rounded-sm text-sm bg-white shadow-lg border border-slate-200 text-slate-600">
+      class="md:absolute md:right-7 min-w-80 px-4 py-2 mt-3 rounded-sm text-sm bg-white shadow-lg border border-slate-200 text-slate-600">
       <div class="flex w-full justify-between items-start">
         <div class="flex">
           <svg v-if="type === 'warning'" class="w-4 h-4 shrink-0 fill-current text-amber-500 mt-[3px] mr-3"

@@ -38,11 +38,11 @@
             </router-link>
           </li>
           <li>
-            <router-link class="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" to="#0" @click="dropdownOpen = false">
+            <router-link class="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3" :to="{ name: 'home' }" @click="dropdownOpen = false">
               <svg class="w-3 h-3 fill-current text-indigo-300 shrink-0 mr-2" viewBox="0 0 12 12">
                 <path d="M10.5 0h-9A1.5 1.5 0 000 1.5v9A1.5 1.5 0 001.5 12h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 0zM10 7L8.207 5.207l-3 3-1.414-1.414 3-3L5 2h5v5z" />
               </svg>
-              <span>Support Site</span>
+              <span>Website</span>
             </router-link>
           </li>
           <li>

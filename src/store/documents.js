@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useNotificationStore } from "./notification";
 import axiosClient from "../axios";
 
 export const useDocumentStore = defineStore("document", {
@@ -7,9 +8,6 @@ export const useDocumentStore = defineStore("document", {
     currentDocument: {},
     modalViewDocument: false,
     modalDeleteDocument: false,
-    isOpenNotification: false,
-    typeNotification: '',
-    messageNotification: '',
   }),
 
   getters: {},
@@ -27,6 +25,7 @@ export const useDocumentStore = defineStore("document", {
 
 
     async createDocument(document) {
+      const storeNotification = useNotificationStore()
       let form = new FormData();
       
       form.append('title', document.title);
@@ -38,15 +37,16 @@ export const useDocumentStore = defineStore("document", {
 
       return await axiosClient.post('/documents/store', document)
       .then(() => {
-        this.notification('success', 'Documento creado con éxito');
+        storeNotification.notification('success', 'Documento creado con éxito');
       })
       .catch(() => {
-        this.notification('error', 'Error al crear el documento');
+        storeNotification.notification('error', 'Error al crear el documento');
       });
     },
 
 
     async updateDocument(document) {
+      const storeNotification = useNotificationStore();
       const id = document.id;
       if(document.file){
         let form = new FormData();
@@ -60,11 +60,11 @@ export const useDocumentStore = defineStore("document", {
       }
       return await axiosClient.post(`/documents/update/${id}`, document)
       .then(() => {
-        this.notification('success', 'Documento actualizado con éxito');
+        storeNotification.notification('success', 'Documento actualizado con éxito');
         console.log('Documento actualizado con éxito');
       })
       .catch((error) => {
-        this.notification('error', 'Error al actualizar el documento');
+        storeNotification.notification('error', 'Error al actualizar el documento');
         console.log(error.response);
       });
     },
@@ -112,17 +112,6 @@ export const useDocumentStore = defineStore("document", {
         this.modalDeleteDocument = false;
         this.getDocuments();
       });
-    },
-    
-
-    notification(type, message) {
-      this.typeNotification = type;
-      this.messageNotification = message;
-      this.isOpenNotification = true;
-
-      setTimeout(() => {
-        this.isOpenNotification = false;
-      }, 3000);
     },
 
 
